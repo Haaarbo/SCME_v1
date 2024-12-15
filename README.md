@@ -49,7 +49,7 @@ O pgAdmin para gerenciar o banco de dados estará disponível em http://localhos
 
 ## Cadastro de Usuários e Materiais
 + Cadastro de Usuário: Acesse a API de cadastro de usuários através do frontend
-POST http://localhost:8000/api/usuarios/
+http://localhost:8000/api/usuarios/
 Corpo do Usuário:
 ```
 {
@@ -60,8 +60,8 @@ Corpo do Usuário:
 }
 ```
 
-+ Cadastro de Material: Acesse a API de cadastro de materiais. Você deve preencher
-POST http://localhost:8000/api/materials/
++ Cadastro de Material: Acesse a API de cadastro de materiais. 
+http://localhost:8000/api/materials/
 Corpo do Material:
 
 ```
@@ -88,4 +88,5 @@ Utilize o endpoint /api/materials/ para realizar uma pesquisa por usuários.
 Utilize o endpoint /api/usuarios/ para realizar uma pesquisa por usuários.
 
 Ex.: `http://localhost:8000/api/usuarios/?search=João`
+
 Ex.: `http://localhost:8000/api/materials/?search=Esterilizador` 
