@@ -1,0 +1,56 @@
+services:
+  # Serviço do Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
+  # Serviço do Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://abrahao:4br4h@0NG@db:5432/scmDb
+
+  # Serviço do Banco de Dados
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: abrahao
+      POSTGRES_PASSWORD: 4br4h@0NG
+      POSTGRES_DB: scmDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - meu_projeto_frontend_postgres_data:/var/lib/postgresql/data
+
+  # Serviço do PgAdmin
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+# Volumes para persistência de dados
+volumes:
+  meu_projeto_frontend_postgres_data:

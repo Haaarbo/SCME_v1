@@ -1,0 +1,9 @@
+asgiref==3.8.1
+Django==5.1.4
+sqlparse==0.5.3
+tzdata==2024.2
+requests==2.28.2      # Para chamadas HTTP
+psycopg2==2.9.6       # Para conexão com PostgreSQL
+djangorestframework
+reportlab
+openpyxl
