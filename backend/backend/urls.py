@@ -16,11 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.views import rastreabilidade
-from core.views import gerar_relatorio_pdf, gerar_relatorio_xlsx
 from rest_framework.routers import DefaultRouter
-from core.views import UsuarioViewSet, MaterialViewSet
-from . import views
+from core import views
+from core.views import rastreabilidade, gerar_relatorio_pdf, gerar_relatorio_xlsx, UsuarioViewSet, MaterialViewSet
+
 
 
 
@@ -36,4 +35,5 @@ urlpatterns = [
     path("api/relatorio/pdf/", gerar_relatorio_pdf, name="relatorio_pdf"),
     path("api/relatorio/xlsx/", gerar_relatorio_xlsx, name="relatorio_xlsx"),
     path('pesquisa/', views.pesquisa_material, name='pesquisa_material'),
+    path('api-auth/', include('rest_framework.urls')),
 ]
